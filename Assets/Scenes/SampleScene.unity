@@ -10008,6 +10008,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee0175dc4b835a4b848fc736a271da1, type: 3}
+--- !u!4 &273874760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4527812262845135235, guid: 9b50747e85a09eb43b8fe9d8b0b7a3fd, type: 3}
+  m_PrefabInstance: {fileID: 1897592310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &292107234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7098752492685574480, guid: 1819837d376ad4245bfc774bfad477ae, type: 3}
@@ -20550,8 +20555,8 @@ GameObject:
   m_Component:
   - component: {fileID: 709971417}
   - component: {fileID: 709971418}
-  - component: {fileID: 709971419}
   - component: {fileID: 709971420}
+  - component: {fileID: 709971421}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -20600,29 +20605,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 1, y: 2, z: 1}
---- !u!114 &709971419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709971416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b373a76fd8b10044fa91b94dcd8a5f80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  walkSpeed: 1.5
-  runSpeed: 3.5
-  rotationSpeed: 3
-  gravity: -20
-  jumpHeight: 1.5
-  groundCheck: {fileID: 0}
-  groundDistance: 0.3
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  animator: {fileID: 2081741464}
 --- !u!82 &709971420
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20720,6 +20702,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &709971421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709971416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b373a76fd8b10044fa91b94dcd8a5f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  walkSpeed: 1.5
+  runSpeed: 3.5
+  rotationSpeed: 120
+  gravity: -20
+  jumpHeight: 1.5
+  animator: {fileID: 0}
+  audioSource: {fileID: 709971420}
+  walkSound: {fileID: 8300000, guid: 96c6c11de3024904b9799daa597468e5, type: 3}
+  runSound: {fileID: 8300000, guid: f41eebe5a5e555e45a8b273a2540faa5, type: 3}
+  jumpSound: {fileID: 8300000, guid: 15758917a74d9c646b45dcaa27ee1d05, type: 3}
 --- !u!4 &747324691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1943511979621500623, guid: 9de657c1c3aab8e40aa81c262958aa9e, type: 3}
@@ -21228,13 +21232,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958915955}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.106630966, y: -0.04266666, z: 0.008253199, w: 0.9933486}
+  m_LocalRotation: {x: 0.18508437, y: -0.042466562, z: 0.011548953, w: 0.9817368}
   m_LocalPosition: {x: 287.378, y: 3.437, z: 232.551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 12.272, y: -4.873, z: 0.428}
+  m_LocalEulerAnglesHint: {x: 21.37, y: -4.873, z: 0.428}
 --- !u!1 &1022037602
 GameObject:
   m_ObjectHideFlags: 0
@@ -26467,7 +26471,7 @@ MonoBehaviour:
   player: {fileID: 709971416}
   seatPoint: {fileID: 454669669}
   exitPoint: {fileID: 0}
-  playerMovement: {fileID: 709971419}
+  playerMovement: {fileID: 0}
   tractorMovement: {fileID: 1245694994}
   enterDistance: 4
 --- !u!114 &1245694999
@@ -26613,9 +26617,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313a18e916c16bc4ba81a94e734fee51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelSteering
-  steeringWheel: {fileID: 0}
+  steeringWheel: {fileID: 273874760}
   maxSteeringAngle: 180
   smoothSpeed: 8
+--- !u!143 &1245695004
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245694993}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1315840444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2501215908033989814, guid: cfd80bcd0722f0a43abb35f9a08c8a2a, type: 3}
@@ -32311,6 +32340,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 9b50747e85a09eb43b8fe9d8b0b7a3fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1245695002}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 9b50747e85a09eb43b8fe9d8b0b7a3fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245695004}
   m_SourcePrefab: {fileID: 100100000, guid: 9b50747e85a09eb43b8fe9d8b0b7a3fd, type: 3}
 --- !u!4 &1927502338 stripped
 Transform:
